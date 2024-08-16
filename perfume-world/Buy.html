@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Product</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.CSS">
+</head>
+<body>
+    <div class="container">
+        <div id="product-details">
+            <h2>Product Name</h2>
+            
+            <p><strong>Price:</strong> $200.00</p>
+            <p><strong>Description:</strong> This is a short description of the product.
+			      <br><b>Perfume ingredients include a blend of alcohol, oils, and other aromatic components. 
+				  Each fragrance has a distinct smell based on how it was made and the various perfume ingredients used in it. 
+				  Some ingredients in perfume may sound familiar while others appear completely foreign</p>
+        </div>
+        
+        <form id="orderform" method="POST">
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Shipping Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" name="payment_method" required>
+                    <option value="credit_card">Credit Card</option>
+                    <option value="paypal">phone pay</option>
+                    <option value="bank_transfer">Bank Transfer</option>
+					<option value="cod">cash on Delivery</option>
+                </select>
+            </div>
+            <button type="button" id="orderButton" class="btn">Place Order</button>     
+            <div id="message"></div>
+        </form>
+    </div>
+    
+    <!-- Include the JavaScript file -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    const orderButton = document.getElementById('orderButton');
+    const orderForm = document.getElementById('orderForm');
+    const messageDiv = document.getElementById('message');
+
+    orderButton.addEventListener('click', function() {
+        // Check if all form fields are filled
+        const isValid = orderForm.checkValidity();
+        
+        if (isValid) {
+            // Display success message if form is valid
+            messageDiv.textContent = "Order successfully placed!";
+            // Optionally, you can submit the form programmatically
+            // orderForm.submit();
+        } else {
+            // Display error message if form is not valid
+            messageDiv.textContent = "Please fill out all required fields.";
+        }
+    });
+});
+
+
+    </script>
+</body>
+</html>
